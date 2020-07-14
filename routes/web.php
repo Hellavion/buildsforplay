@@ -14,5 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts/app');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/createBuild', 'BuildController@index');
+Route::get('/listBuild', 'BuildController@view');
+Route::get('/build', 'BuildController@getBuild');
+Route::post('/createBuild', 'BuildController@store');
+Route::delete('/createBuild/{createBuild}', 'BuildController@destroy');
+
+Route::get('/viewProfile', 'ProfileController@view');
+Route::get('/profiles', 'ProfileController@show');
+Route::post('/profile', 'ProfileController@update');
